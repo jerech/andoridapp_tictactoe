@@ -19,7 +19,7 @@ public interface ApiInterface {
     @POST("games/play")
     Call<PlayResponse> play(@Field("idGame") String idGame,
                             @Field("position") int position);
-    
+
     @FormUrlEncoded
     @POST("games/start")
     Call<Game> startGame(@Field("userName") String userName);
