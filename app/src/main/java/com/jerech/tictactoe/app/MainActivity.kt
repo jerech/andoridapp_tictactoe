@@ -74,6 +74,8 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        tvMessage.text = "";
+
         if(game != null) {
             game!!.board = Array<String>(9, {""} )
             generatedBoard(game!!)
@@ -109,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
     fun play (position: Int){
 
-        if(game!!.winner != null) {
+        if(this.game?.winner != null) {
             return
         }
 
@@ -135,7 +137,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleError(error: Throwable) {
-        Log.i("TAG", error.message)
         try {
             val apiError = Gson().fromJson(error.message, ApiError::class.java)
             tvMessage.text = apiError.message
