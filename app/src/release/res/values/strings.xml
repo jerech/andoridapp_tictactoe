@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="base_url_api">http://31.220.62.157/</string>
+    <string name="endpoint">api_tictactoe/</string>
+</resources>
