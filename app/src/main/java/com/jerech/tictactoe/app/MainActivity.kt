@@ -3,17 +3,21 @@ package com.jerech.tictactoe.app
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import com.google.gson.Gson
 import com.jerech.tictactoe.app.api.ApiClient
 import com.jerech.tictactoe.app.api.ApiInterface
+import com.jerech.tictactoe.app.api.pojo.ApiError
 import com.jerech.tictactoe.app.api.pojo.PlayResponse
 import com.jerech.tictactoe.app.model.Game
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -70,10 +74,18 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        if(game != null) {
+            game!!.board = Array<String>(9, {""} )
+            generatedBoard(game!!)
+        }
+
+
 
         var apiClient = ApiClient()
         var retrofit = apiClient.getClient(applicationContext)
         val service = retrofit.create(ApiInterface::class.java)
+
+        progressBar.visibility = View.VISIBLE
 
 
         myCompositeDisposable?.add(service.startGame(etUserName.text.toString())
@@ -92,9 +104,14 @@ class MainActivity : AppCompatActivity() {
         this.game  = game
 
         loBoard.visibility = View.VISIBLE
+        progressBar.visibility = View.GONE
     }
 
     fun play (position: Int){
+
+        if(game!!.winner != null) {
+            return
+        }
 
         tvMessage.text = ""
 
@@ -104,6 +121,8 @@ class MainActivity : AppCompatActivity() {
         var apiClient = ApiClient()
         var retrofit = apiClient.getClient(applicationContext)
         val service = retrofit.create(ApiInterface::class.java)
+
+        progressBar.visibility = View.VISIBLE
 
         myCompositeDisposable?.add(service.play(game!!.id, position)
             .observeOn(AndroidSchedulers.mainThread())
@@ -116,7 +135,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleError(error: Throwable) {
-        println(error.localizedMessage)
+        Log.i("TAG", error.message)
+        try {
+            val apiError = Gson().fromJson(error.message, ApiError::class.java)
+            tvMessage.text = apiError.message
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        progressBar.visibility = View.GONE
     }
 
     private fun handlePlayResponse(play: PlayResponse) {
@@ -126,6 +152,7 @@ class MainActivity : AppCompatActivity() {
         tvMessage.text = play.message
 
         generatedBoard(game!!)
+        progressBar.visibility = View.GONE
 
     }
 
