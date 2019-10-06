@@ -1,28 +1,31 @@
-package com.amta.socialneed.webservices;
-
-import com.amta.socialneed.models.DatosSocialNeed;
-import com.amta.socialneed.prestador.model.EntidadBancaria;
+package com.jerech.tictactoe.app.api;
 
 import java.util.List;
 
+import com.jerech.tictactoe.app.api.pojo.PlayResponse;
+import com.jerech.tictactoe.app.model.Game;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 /**
- * Created by jeremias on 3/05/17.
+ * Created by jeremias on 05/10/19.
  */
 
 public interface ApiInterface {
 
 
 
-    @GET("games/play")
-    Call<DatosSocialNeed> getDatosEmpresa();
+    @FormUrlEncoded
+    @POST("games/play")
+    Call<PlayResponse> play(@Field("idGame") String idGame,
+                            @Field("position") int position);
+    
+    @FormUrlEncoded
+    @POST("games/start")
+    Call<Game> startGame(@Field("userName") String userName);
 
-
-    @GET("entidadesBancarias")
-    Call<List<EntidadBancaria>> getEntidadesBancarias(@Query("codigo_pais") String codigoPais);
+    @GET("games")
+    Call<List<Game>> getGames(@Query("userName") String userName);
 
 
 }

@@ -1,0 +1,14 @@
+package com.jerech.tictactoe.app.model;
+import java.util.*
+
+class Game {
+
+    private var id: String = "";
+    private var createdUser: String = "";
+    private var lastUser: String = "";
+    private var winner: String = "";
+    private var board: Array<String>? = null;
+    private var createdDate: Date? = null;
+    private var finishDate: Date? = null;
+
+}

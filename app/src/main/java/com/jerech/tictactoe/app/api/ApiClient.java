@@ -1,16 +1,14 @@
-package com.amta.socialneed.webservices;
+package com.jerech.tictactoe.app.api;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.amta.socialneed.R;
-import com.amta.socialneed.activities.PantallaInicio;
-import com.amta.socialneed.prestador.ApplicationData;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import com.jerech.tictactoe.app.R;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
