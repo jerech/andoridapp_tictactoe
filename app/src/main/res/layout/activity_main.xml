@@ -10,23 +10,26 @@
 
 
     <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginBottom="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
     >
-        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+        <EditText android:layout_width="170dp" android:layout_height="wrap_content"
                   android:id="@+id/etUserName"
             android:hint="Enter username"/>
-            <Button android:layout_width="130dp" android:layout_height="wrap_content"
-            android:text="Iniciar Juego"
+            <Button android:layout_width="170dp" android:layout_height="wrap_content"
+            android:text="Start Game"
                     android:textColor="#FFFFFF"
-                    android:layout_marginLeft="16dp"
                     android:background="@color/colorAccent"
             android:id="@+id/btnGame"/>
         </LinearLayout>
 
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+    android:orientation="vertical" android:id="@+id/loBoard" android:gravity="center">
 
     <LinearLayout
             android:orientation="horizontal"
@@ -36,17 +39,17 @@
             >
 
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-        android:id="@+id/positio1"
+        android:id="@+id/position1"
                   android:gravity="center"
                   android:textSize="60sp"
         android:background="@drawable/border_textview"/>
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-                  android:id="@+id/positio2"
+                  android:id="@+id/position2"
                   android:gravity="center"
                   android:textSize="60sp"
                   android:background="@drawable/border_textview"/>
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-                  android:id="@+id/positio3"
+                  android:id="@+id/position3"
                   android:gravity="center"
                   android:textSize="60sp"
                   android:background="@drawable/border_textview"/>
@@ -60,17 +63,17 @@
     >
 
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-                  android:id="@+id/positio4"
+                  android:id="@+id/position4"
                   android:gravity="center"
                   android:textSize="60sp"
                   android:background="@drawable/border_textview"/>
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-                  android:id="@+id/positio5"
+                  android:id="@+id/position5"
                   android:gravity="center"
                   android:textSize="60sp"
                   android:background="@drawable/border_textview"/>
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-                  android:id="@+id/positio6"
+                  android:id="@+id/position6"
                   android:gravity="center"
                   android:textSize="60sp"
                   android:background="@drawable/border_textview"/>
@@ -84,20 +87,28 @@
     >
 
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-                  android:id="@+id/positio7"
+                  android:id="@+id/position7"
                   android:gravity="center"
                   android:textSize="60sp"
                   android:background="@drawable/border_textview"/>
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-                  android:id="@+id/positio8"
+                  android:id="@+id/position8"
                   android:gravity="center"
                   android:textSize="60sp"
                   android:background="@drawable/border_textview"/>
         <TextView android:layout_width="100dp" android:layout_height="100dp"
-                  android:id="@+id/positio9"
+                  android:id="@+id/position9"
                   android:gravity="center"
                   android:textSize="60sp"
                   android:background="@drawable/border_textview"/>
+    </LinearLayout>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:id="@+id/tvMessage"
+                  android:gravity="center"
+                  android:textStyle="bold"
+                  android:layout_marginTop="16dp"
+                  android:textSize="22sp"/>
+
     </LinearLayout>
 
 

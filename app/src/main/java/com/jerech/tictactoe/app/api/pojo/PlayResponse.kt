@@ -10,7 +10,7 @@ import com.jerech.tictactoe.app.model.Game
 class PlayResponse {
 
     var message: String = "";
-    var id: Game ?= null;
+    lateinit var currentGame: Game;
 
 
 }

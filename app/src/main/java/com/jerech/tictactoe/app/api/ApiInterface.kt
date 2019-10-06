@@ -1,9 +1,10 @@
 package com.jerech.tictactoe.app.api;
 
-import java.util.List;
+import kotlin.collections.List;
 
 import com.jerech.tictactoe.app.api.pojo.PlayResponse;
 import com.jerech.tictactoe.app.model.Game;
+import io.reactivex.Observable
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -17,15 +18,16 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("games/play")
-    Call<PlayResponse> play(@Field("idGame") String idGame,
-                            @Field("position") int position);
+    fun play(@Field("idGame")  idGame: String,
+                            @Field("position") position: Int ): Observable<PlayResponse>
 
     @FormUrlEncoded
     @POST("games/start")
-    Call<Game> startGame(@Field("userName") String userName);
+    fun startGame(@Field("userName") userName: String): Observable<Game>
 
     @GET("games")
-    Call<List<Game>> getGames(@Query("userName") String userName);
+    fun getGames(@Query("userName") userName: String): Observable<List<Game>>
+
 
 
 }
